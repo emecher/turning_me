@@ -1,0 +1,1196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Motion Design Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #F4F4F5;
+      --dark: #171717;
+      --purple: #5B338B;
+      --orange: #FF7E00;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    section {
+      width: 100%;
+      position: relative;
+    }
+
+    /* --------------------------------
+       INTRO SECTION
+    --------------------------------- */
+
+    .hero {
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8vw;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 28px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(58px, 11vw, 150px);
+      line-height: .9;
+      letter-spacing: -7px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    h1 span {
+      color: var(--purple);
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 55px;
+      gap: 30px;
+    }
+
+    .hero-bottom p {
+      max-width: 430px;
+      font-size: clamp(16px, 2vw, 22px);
+      line-height: 1.5;
+      color: var(--dark);
+    }
+
+    .scroll-hint {
+      color: var(--purple);
+      font-size: 12px;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    /* --------------------------------
+       STICKY ANIMATION SCROLL TRACK
+    --------------------------------- */
+
+    .animation-scroll-track {
+      height: 500vh;
+      position: relative;
+      background: var(--bg);
+    }
+
+    .animation-section {
+      position: sticky;
+      top: 0;
+
+      width: 100%;
+      height: 100vh;
+      min-height: 100vh;
+
+      background: var(--bg);
+      color: var(--dark);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 50px 5vw;
+      overflow: hidden;
+
+      touch-action: pan-x;
+    }
+
+    .animation-wrap {
+      width: 100%;
+      max-width: 1200px;
+      position: relative;
+    }
+
+    .animation-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+
+      color: var(--purple);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    #lottie-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-height: 65vh;
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    #lottie-container svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .loading {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: var(--purple);
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-align: center;
+
+      z-index: 2;
+    }
+
+    .loading.error {
+      color: var(--orange);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    /* --------------------------------
+       PROGRESS BAR
+    --------------------------------- */
+
+    .progress-area {
+      margin-top: 25px;
+    }
+
+    .progress-track {
+      height: 3px;
+      background: #D8D8DC;
+      width: 100%;
+      position: relative;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--orange);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .milestones {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+
+      color: #999;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .milestones span.active {
+      color: var(--purple);
+      font-weight: bold;
+    }
+
+    /* --------------------------------
+       ABOUT SECTION
+    --------------------------------- */
+
+    .about {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--dark);
+
+      padding: 12vw 8vw;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about .eyebrow {
+      color: var(--orange);
+    }
+
+    .about h2 {
+      font-size: clamp(48px, 9vw, 120px);
+      line-height: .95;
+      letter-spacing: -5px;
+      max-width: 1000px;
+      color: var(--purple);
+    }
+
+    .about-description {
+      max-width: 550px;
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.6;
+      margin-top: 50px;
+      color: var(--dark);
+    }
+
+    /* --------------------------------
+       CONTACT SECTION
+    --------------------------------- */
+
+    .contact {
+      min-height: 80vh;
+      background: var(--bg);
+      color: var(--dark);
+
+      padding: 10vw 8vw;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact h2 {
+      font-size: clamp(55px, 10vw, 135px);
+      line-height: .9;
+      letter-spacing: -6px;
+      color: var(--dark);
+    }
+
+    .contact h2 span {
+      color: var(--orange);
+    }
+
+    .contact-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 70px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .contact a {
+      color: var(--purple);
+      text-decoration: none;
+      border-bottom: 1px solid var(--purple);
+      padding-bottom: 4px;
+    }
+
+    /* --------------------------------
+       RESPONSIVE
+    --------------------------------- */
+
+    @media (max-width: 700px) {
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .animation-section {
+        padding: 25px 18px;
+      }
+
+      .animation-label {
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      #lottie-container {
+        max-height: 55vh;
+      }
+
+      .milestones {
+        font-size: 8px;
+        letter-spacing: 0;
+      }
+
+      .about h2,
+      .contact h2 {
+        letter-spacing: -2px;
+      }
+
+      .contact-footer {
+        flex-direction: column;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- INTRO -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Portfolio / Motion Design
+      </div>
+
+      <h1>
+        THIS IS<br>
+        <span>ME.</span>
+      </h1>
+
+      <div class="hero-bottom">
+
+        <p>
+          I'm a motion designer passionate about creating
+          meaningful visual stories through movement,
+          design and experimentation.
+        </p>
+
+        <div class="scroll-hint">
+          SCROLL TO EXPLORE ↓
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ANIMATION SCROLL TRACK -->
+  <div class="animation-scroll-track" id="animation-track">
+
+    <section class="animation-section" id="animation-section">
+
+      <div class="animation-wrap">
+
+        <div class="animation-label">
+
+          <span>THE MOTION JOURNEY</span>
+
+          <span id="frame-counter">0 / 100</span>
+
+        </div>
+
+        <div id="lottie-container">
+
+          <div class="loading" id="loading">
+            LOADING ANIMATION...
+          </div>
+
+        </div>
+
+        <div class="progress-area">
+
+          <div class="progress-track">
+
+            <div
+              class="progress-fill"
+              id="progress-fill">
+            </div>
+
+          </div>
+
+          <div class="milestones">
+
+            <span class="active">01 — START</span>
+
+            <span>02 — EXPLORE</span>
+
+            <span>03 — CREATE</span>
+
+            <span>04 — EVOLVE</span>
+
+            <span>05 — FINISH</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <!-- ABOUT -->
+  <section class="about">
+
+    <div class="eyebrow">
+      A little about me
+    </div>
+
+    <h2>
+      IDEAS<br>
+      INTO<br>
+      MOTION.
+    </h2>
+
+    <p class="about-description">
+      I believe every frame has a purpose and every
+      movement can tell a story. My work combines
+      creativity, visual exploration and attention
+      to detail to create memorable experiences.
+    </p>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact">
+
+    <div>
+
+      <div class="eyebrow">
+        Let's work together
+      </div>
+
+      <h2>
+        HAVE A<br>
+        <span>PROJECT?</span>
+      </h2>
+
+    </div>
+
+    <div class="contact-footer">
+
+      <span>© 2026 — MY PORTFOLIO</span>
+
+      <a href="mailto:hello@example.com">
+        GET IN TOUCH ↗
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- LOTTIE LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+
+
+  <script>
+
+    /* --------------------------------
+       LOAD FALLBACK LOTTIE LIBRARY
+    --------------------------------- */
+
+    function loadFallbackLibrary() {
+
+      return new Promise((resolve, reject) => {
+
+        const script = document.createElement("script");
+
+        script.src =
+          "https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js";
+
+        script.onload = () => {
+
+          if (window.lottie) {
+            resolve();
+          } else {
+            reject(new Error("Lottie library not found."));
+          }
+
+        };
+
+        script.onerror = () => {
+
+          reject(
+            new Error("Could not load Lottie from fallback CDN.")
+          );
+
+        };
+
+        document.head.appendChild(script);
+
+      });
+
+    }
+
+
+    /* --------------------------------
+       INITIALIZE LOTTIE
+    --------------------------------- */
+
+    async function startLottie() {
+
+      const container =
+        document.getElementById("lottie-container");
+
+      const loading =
+        document.getElementById("loading");
+
+      try {
+
+        if (!window.lottie) {
+          await loadFallbackLibrary();
+        }
+
+        if (!window.lottie) {
+          throw new Error("Lottie library is unavailable.");
+        }
+
+        const animation = window.lottie.loadAnimation({
+
+          container: container,
+
+          renderer: "svg",
+
+          loop: false,
+
+          autoplay: false,
+
+          path: "./Me_data.json",
+
+          rendererSettings: {
+            preserveAspectRatio: "xMidYMid meet"
+          }
+
+        });
+
+
+        animation.addEventListener("DOMLoaded", () => {
+
+          loading.style.display = "none";
+
+          animation.setSubframe(true);
+
+          animation.goToAndStop(0, true);
+
+          setupScrollAnimation(animation);
+
+        });
+
+
+        animation.addEventListener("data_failed", () => {
+
+          showError(
+            "Animation data could not be loaded.<br>" +
+            "Please check Me_data.json and the images folder."
+          );
+
+        });
+
+
+        animation.addEventListener("error", () => {
+
+          showError(
+            "An error occurred while loading the animation."
+          );
+
+        });
+
+      }
+
+      catch (error) {
+
+        console.error("Lottie initialization error:", error);
+
+        showError(
+          "Lottie library could not be loaded.<br>" +
+          "Check your internet connection or try another CDN."
+        );
+
+      }
+
+    }
+
+
+    function showError(message) {
+
+      const loading =
+        document.getElementById("loading");
+
+      loading.style.display = "flex";
+
+      loading.classList.add("error");
+
+      loading.innerHTML = message;
+
+    }
+
+
+    /* --------------------------------
+       STEP-BASED SCROLL ANIMATION
+
+       Every wheel gesture advances exactly
+       one milestone:
+
+       0 -> 25 -> 50 -> 75 -> 100
+
+       Each transition uses a time-based
+       Ease In Out Cubic animation.
+
+       The sticky section remains pinned
+       until the user reaches 100%.
+    --------------------------------- */
+
+    function setupScrollAnimation(animation) {
+
+      const track =
+        document.getElementById("animation-track");
+
+      const progressFill =
+        document.getElementById("progress-fill");
+
+      const counter =
+        document.getElementById("frame-counter");
+
+      const milestoneLabels =
+        document.querySelectorAll(".milestones span");
+
+
+      const milestones = [0, 25, 50, 75, 100];
+
+      const maxFrame =
+        Math.max(0, animation.totalFrames - 1);
+
+
+      const DURATION = 900;
+
+      const GESTURE_COOLDOWN = 750;
+
+
+      let currentProgress = 0;
+
+      let isAnimating = false;
+
+      let gestureLocked = false;
+
+      let animationRequest = null;
+
+      let touchStartY = 0;
+
+
+      /* --------------------------------
+         HELPERS
+      --------------------------------- */
+
+      function clamp(value, min, max) {
+
+        return Math.min(
+          Math.max(value, min),
+          max
+        );
+
+      }
+
+
+      function easeInOutCubic(t) {
+
+        return t < 0.5
+
+          ? 4 * t * t * t
+
+          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+      }
+
+
+      function getActiveMilestoneIndex(progress) {
+
+        return milestones.indexOf(progress);
+
+      }
+
+
+      function renderProgress(progress) {
+
+        currentProgress = clamp(progress, 0, 100);
+
+
+        const frame =
+          (currentProgress / 100) * maxFrame;
+
+
+        animation.goToAndStop(frame, true);
+
+
+        progressFill.style.width =
+          currentProgress + "%";
+
+
+        counter.textContent =
+          Math.round(currentProgress) + " / 100";
+
+
+        const activeIndex = Math.max(
+          0,
+          getActiveMilestoneIndex(currentProgress)
+        );
+
+
+        milestoneLabels.forEach((label, index) => {
+
+          label.classList.toggle(
+            "active",
+            index === activeIndex
+          );
+
+        });
+
+      }
+
+
+      /* --------------------------------
+         CHECK IF ANIMATION IS PINNED
+      --------------------------------- */
+
+      function isPinned() {
+
+        const rect = track.getBoundingClientRect();
+
+        const viewportHeight = window.innerHeight;
+
+
+        return (
+          rect.top <= 1 &&
+          rect.bottom >= viewportHeight - 1
+        );
+
+      }
+
+
+      /* --------------------------------
+         RELEASE PIN AT THE EDGES
+
+         At 100%, the next downward gesture
+         releases the page to the next section.
+
+         At 0%, the next upward gesture
+         releases the page to the previous section.
+      --------------------------------- */
+
+      function releasePin(direction) {
+
+        const rect = track.getBoundingClientRect();
+
+        const absoluteTrackTop =
+          window.scrollY + rect.top;
+
+        const absoluteTrackBottom =
+          absoluteTrackTop + track.offsetHeight;
+
+
+        if (direction > 0) {
+
+          const endPosition =
+            absoluteTrackBottom - window.innerHeight;
+
+          window.scrollTo({
+            top: endPosition,
+            behavior: "auto"
+          });
+
+        } else {
+
+          const previousSectionPosition =
+            Math.max(
+              0,
+              absoluteTrackTop - window.innerHeight
+            );
+
+          window.scrollTo({
+            top: previousSectionPosition,
+            behavior: "auto"
+          });
+
+        }
+
+      }
+
+
+      /* --------------------------------
+         ANIMATE TO NEXT MILESTONE
+
+         This is the main easing function.
+         It does not map the user's scroll
+         distance to individual frames.
+      --------------------------------- */
+
+      function animateTo(targetProgress) {
+
+        if (isAnimating) return;
+
+
+        const startProgress = currentProgress;
+
+        const distance =
+          targetProgress - startProgress;
+
+
+        if (distance === 0) return;
+
+
+        isAnimating = true;
+
+
+        let startTime = null;
+
+
+        function animationStep(timestamp) {
+
+          if (startTime === null) {
+            startTime = timestamp;
+          }
+
+
+          const elapsed =
+            timestamp - startTime;
+
+
+          const linearProgress =
+            clamp(elapsed / DURATION, 0, 1);
+
+
+          const easedProgress =
+            easeInOutCubic(linearProgress);
+
+
+          const newProgress =
+            startProgress +
+            distance * easedProgress;
+
+
+          renderProgress(newProgress);
+
+
+          if (linearProgress < 1) {
+
+            animationRequest =
+              requestAnimationFrame(animationStep);
+
+          } else {
+
+            renderProgress(targetProgress);
+
+            isAnimating = false;
+
+            animationRequest = null;
+
+          }
+
+        }
+
+
+        animationRequest =
+          requestAnimationFrame(animationStep);
+
+      }
+
+
+      /* --------------------------------
+         MOVE ONE STEP
+
+         One gesture = one 25% transition.
+      --------------------------------- */
+
+      function moveOneStep(direction) {
+
+        if (isAnimating) return;
+
+
+        const currentIndex =
+          getActiveMilestoneIndex(currentProgress);
+
+
+        if (direction > 0) {
+
+          // Already at the final milestone:
+          // release the sticky section.
+
+          if (currentProgress >= 100) {
+
+            releasePin(1);
+
+            return;
+
+          }
+
+
+          const nextIndex =
+            Math.min(currentIndex + 1, 4);
+
+
+          animateTo(milestones[nextIndex]);
+
+        } else {
+
+          // Already at the first milestone:
+          // release the sticky section upward.
+
+          if (currentProgress <= 0) {
+
+            releasePin(-1);
+
+            return;
+
+          }
+
+
+          const previousIndex =
+            Math.max(currentIndex - 1, 0);
+
+
+          animateTo(milestones[previousIndex]);
+
+        }
+
+      }
+
+
+      /* --------------------------------
+         GESTURE LOCK
+
+         Prevents one long trackpad/wheel
+         gesture from triggering several steps.
+      --------------------------------- */
+
+      function lockGesture() {
+
+        if (gestureLocked) return false;
+
+
+        gestureLocked = true;
+
+
+        setTimeout(() => {
+
+          gestureLocked = false;
+
+        }, GESTURE_COOLDOWN);
+
+
+        return true;
+
+      }
+
+
+      /* --------------------------------
+         MOUSE WHEEL CONTROL
+      --------------------------------- */
+
+      window.addEventListener(
+        "wheel",
+
+        event => {
+
+          if (!isPinned()) return;
+
+
+          // Keep the browser from moving the page
+          // while the animation is being controlled.
+
+          event.preventDefault();
+
+
+          if (isAnimating || gestureLocked) {
+            return;
+          }
+
+
+          if (Math.abs(event.deltaY) < 10) {
+            return;
+          }
+
+
+          const direction =
+            event.deltaY > 0 ? 1 : -1;
+
+
+          lockGesture();
+
+          moveOneStep(direction);
+
+        },
+
+        { passive: false }
+
+      );
+
+
+      /* --------------------------------
+         TOUCH CONTROL FOR MOBILE
+      --------------------------------- */
+
+      const animationSection =
+        document.getElementById("animation-section");
+
+
+      animationSection.addEventListener(
+        "touchstart",
+
+        event => {
+
+          touchStartY =
+            event.touches[0].clientY;
+
+        },
+
+        { passive: true }
+
+      );
+
+
+      animationSection.addEventListener(
+        "touchmove",
+
+        event => {
+
+          if (isPinned()) {
+
+            event.preventDefault();
+
+          }
+
+        },
+
+        { passive: false }
+
+      );
+
+
+      animationSection.addEventListener(
+        "touchend",
+
+        event => {
+
+          if (!isPinned()) return;
+
+
+          const touchEndY =
+            event.changedTouches[0].clientY;
+
+
+          const difference =
+            touchStartY - touchEndY;
+
+
+          if (Math.abs(difference) < 35) {
+            return;
+          }
+
+
+          if (isAnimating || gestureLocked) {
+            return;
+          }
+
+
+          lockGesture();
+
+          moveOneStep(difference > 0 ? 1 : -1);
+
+        },
+
+        { passive: true }
+
+      );
+
+
+      /* --------------------------------
+         KEYBOARD CONTROL
+      --------------------------------- */
+
+      window.addEventListener(
+        "keydown",
+
+        event => {
+
+          if (!isPinned()) return;
+
+
+          if (
+            event.key === "ArrowDown" ||
+            event.key === "ArrowRight"
+          ) {
+
+            event.preventDefault();
+
+
+            if (isAnimating || gestureLocked) {
+              return;
+            }
+
+
+            lockGesture();
+
+            moveOneStep(1);
+
+          }
+
+
+          if (
+            event.key === "ArrowUp" ||
+            event.key === "ArrowLeft"
+          ) {
+
+            event.preventDefault();
+
+
+            if (isAnimating || gestureLocked) {
+              return;
+            }
+
+
+            lockGesture();
+
+            moveOneStep(-1);
+
+          }
+
+        }
+
+      );
+
+
+      /* --------------------------------
+         INITIAL STATE
+      --------------------------------- */
+
+      renderProgress(0);
+
+    }
+
+
+    /* --------------------------------
+       START WHEN PAGE IS READY
+    --------------------------------- */
+
+    window.addEventListener(
+      "load",
+      startLottie
+    );
+
+  </script>
+
+</body>
+</html>
